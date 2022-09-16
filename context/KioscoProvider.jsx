@@ -3,7 +3,8 @@ import axios from "axios";
 const KioscoContext = createContext();
 
 const KioscoProvider = ({children}) => {
-    const [categoria, setCategoria] = useState([]);
+    const [categorias, setCategoria] = useState([]);
+    const [categoriaActual, setCategoriaActual] = useState({});
     const obtenerCategoria = async () => {
         const {data} = await axios("/api/categorias")
         setCategoria(data);
@@ -11,10 +12,18 @@ const KioscoProvider = ({children}) => {
     useEffect(() => {
         obtenerCategoria()
     }, [])
+
+    const handleClickCategoria = id => { 
+        const categoria = categorias.filter(cate => cate.id === id )
+        setCategoria(categoria);
+    }
+
     return(
         <KioscoContext.Provider
             value={{
-                categoria
+                categorias, 
+                categoriaActual,
+                handleClickCategoria
 
             }}
         >

@@ -29,7 +29,7 @@ const KioscoProvider = ({children}) => {
     }
 
     const handleChangeModal = () => {
-        setModal(!modal)
+        setModal(!modal);
     }
 
     return(

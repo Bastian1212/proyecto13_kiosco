@@ -25,11 +25,11 @@ const KioscoProvider = ({children}) => {
     }
 
     const handleSetProducto = producto => {
-        setProducto(producto);
+        setProducto(producto)
     }
 
     const handleChangeModal = () => {
-        setModal(!modal);
+        setModal(true);
     }
 
     return(

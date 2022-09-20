@@ -3,7 +3,7 @@ import Image from 'next/image'
 import {formatearDinero} from "../helpers/index"
 import useKiosco from '../hooks/useKiosco'
 const Producto = ({producto}) => {
-  const {handleSetProducto, handleChangeModal} = useKiosco
+  const {handleSetProducto, handleChangeModal} = useKiosco();
   const {nombre, imagen, precio} = producto
 
   return (
@@ -18,8 +18,9 @@ const Producto = ({producto}) => {
               type='button'
               className='bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold'
               onClick={() => {
-                handleSetProducto(producto);
                 handleChangeModal();
+                handleSetProducto(producto);
+                
                 
                 
               }}

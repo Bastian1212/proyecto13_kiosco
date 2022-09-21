@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const ModalProducto = () => {
+function ModalProducto() {
   return (
-    <div>ModalProducto</div>
+    <div>xd</div>
   )
 }
+
+export default ModalProducto

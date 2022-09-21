@@ -16,6 +16,7 @@ const customStyles = {
 Modal.setAppElement("#__next");
 
 export default function Layout({children, pagina}){
+
     const {modal} = useKiosco();
     return(
         <>
@@ -39,6 +40,8 @@ export default function Layout({children, pagina}){
                     <ModalProducto/>
                 </Modal>
             )}
+        
+
         </>
     )
 

@@ -5,7 +5,7 @@ import {formatearDinero} from "../helpers/index"
 
 function ModalProducto() {
   const  [cantidad,setCantidad] = useState(1);
-  const {producto,handleChangeModal } = useKiosco();
+  const {producto,handleChangeModal , handleAgregarPedido } = useKiosco();
   return (
     <div className='md:flex gap-10'>
       <div className='md:w-1/3'>
@@ -80,11 +80,16 @@ function ModalProducto() {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z "
                 />
               </svg>
           </button>
         </div>
+          <button
+            type='button'
+            className='bg-indigo-600 hover:bg-indigo-800 px-5 py-2 mt-5 text-white font-bold uppercase'
+            onClick={() => handleAgregarPedido({...producto,cantidad})}
+          >Añadir al Pedido </button>
 
       </div>  
 

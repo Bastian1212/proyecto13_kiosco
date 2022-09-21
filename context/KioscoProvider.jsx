@@ -6,7 +6,7 @@ const KioscoProvider = ({children}) => {
     const [categorias, setCategoria] = useState([]);
     const [categoriaActual, setCategoriaActual] = useState({});
     const [producto, setProducto] = useState({});
-    const [modal, setModal] = useState(true);
+    const [modal, setModal] = useState(false);
     const obtenerCategoria = async () => {
         const {data} = await axios("/api/categorias")
         setCategoria(data);

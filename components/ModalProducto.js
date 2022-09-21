@@ -1,8 +1,10 @@
-import React from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import useKiosco from '../hooks/useKiosco'
 import {formatearDinero} from "../helpers/index"
+
 function ModalProducto() {
+  const  [cantidad,setCantidad] = useState(1);
   const {producto,handleChangeModal } = useKiosco();
   return (
     <div className='md:flex gap-10'>
@@ -37,7 +39,13 @@ function ModalProducto() {
         <h1 className='text-3xl font-bold mt-5'>{producto.nombre}</h1>
         <p className='mt-5 font-black text-5xl text-amber-500'>{formatearDinero(producto.precio)}</p>
         <div className='flex gap-4 mt-5'>
-          <button>
+          <button
+            type='button'
+            onClick={() => {
+              if (cantidad > 2)
+                setCantidad(cantidad - 1 )
+            }}
+          >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-7 w-7"
@@ -53,7 +61,14 @@ function ModalProducto() {
                 />
               </svg>
           </button>
-          <button>
+            <p className='text-3xl'>{cantidad}</p>
+          <button
+            type='button'
+            onClick={() => {
+              if(cantidad >= 5 ) return;
+              setCantidad(cantidad + 1 )
+            }}
+          >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-7 w-7"

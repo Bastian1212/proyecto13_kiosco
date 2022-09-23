@@ -14,9 +14,17 @@ const Pasos  = () =>  {
     
 
     const calcularProgreso = () => {
-    
-        return (paso / 3) * 100
-    }
+        let valor; 
+        if(router.pathname === "/"){
+            valor = 2;
+        }else if (router.pathname === "/resumen"){
+            valor=50;
+        }else{
+            valor = 100; 
+        }
+        return valor;
+        
+    };
 
     return (
         <>

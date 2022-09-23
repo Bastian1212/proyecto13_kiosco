@@ -61,6 +61,12 @@ const KioscoProvider = ({children}) => {
         setModal(!modal)
 
     }
+    const handleEliminarProducto = id => {
+        const pedidoActualizado = pedido.filter(producto => producto.id !== id )
+        console.log(pedidoActualizado)
+        setPedido(pedidoActualizado);
+
+    }
 
     return(
         <KioscoContext.Provider
@@ -76,7 +82,8 @@ const KioscoProvider = ({children}) => {
                 handleChangeModal,
                 handleAgregarPedido,
                 handleChangePaso,
-                handleEditarCantidades
+                handleEditarCantidades,
+                handleEliminarProducto
 
             }}
         >

@@ -42,6 +42,7 @@ const KioscoProvider = ({children}) => {
             setPedido([...pedido, producto])
             
         }
+        setModal(false);
         
         
     }
@@ -53,6 +54,7 @@ const KioscoProvider = ({children}) => {
                 categoriaActual,
                 producto,
                 modal,
+                pedido,
                 handleClickCategoria,
                 handleSetProducto,
                 handleChangeModal,

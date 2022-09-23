@@ -1,7 +1,9 @@
 import React from 'react'
 import Image from 'next/image';
+import useKiosco from '../hooks/useKiosco';
 import { formatearDinero } from '../helpers';
 const ResumenPedido = ({producto}) => {
+  const {handleEditarCantidades} = useKiosco();
   return (
     <div className="shadow p-5 mb-3 flex gap-10 items-center">
         <div className="md: w-1/6">
@@ -22,6 +24,9 @@ const ResumenPedido = ({producto}) => {
           <button
             type="button"
             className="bg-sky-700 flex gap-2 px-5 py-2 text-white rounded-md font-bold uppercas shadow-md w-full lg:w-auto"
+            onClick={() => {
+              handleEditarCantidades(producto.id)
+            }}
           >
             <svg
             xmlns="http://www.w3.org/2000/svg"

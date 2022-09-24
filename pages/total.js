@@ -1,9 +1,10 @@
 import { useEffect } from "react"
 import Layout from "../layout/Layout"
 import useKiosco from "../hooks/useKiosco"
+import { formatearDinero } from "../helpers";
 export default function Total () {
 
-    const {pedido, nombreCliente, setNombreCleinte} = useKiosco();
+    const {pedido, nombreCliente, setNombreCleinte, enviarOrden,total} = useKiosco();
 
     const comprobarPedido  = () => { 
     
@@ -13,11 +14,7 @@ export default function Total () {
         comprobarPedido();
     }, [pedido, comprobarPedido])
 
-    const enviarOrden = (e) => {
-        e.preventDefault()
-        console.log("hola")
-    }
-
+    
     return (
         <Layout pagina="Resumen ">
             <h1 className="text-4xl font-black">Total y Confirma Pedido</h1>
@@ -41,7 +38,7 @@ export default function Total () {
                 </div>
                 <div className="mt-10">
                     <p className="text-2xl">
-                        Total a pagar:  {""} <span className="font-bold"> $200</span>
+                        Total a pagar:  {""} <span className="font-bold">{formatearDinero(total)}</span>
                     </p>
 
                 </div>

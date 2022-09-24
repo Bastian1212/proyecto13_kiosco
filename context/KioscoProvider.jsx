@@ -14,6 +14,8 @@ const KioscoProvider = ({children}) => {
     const [paso, setPaso] = useState(1);
     const [nombreCliente, setNombreCleinte] =  useState(""); 
 
+    const [total, setTotal] = useState(0);
+    
     const router = useRouter()
     const obtenerCategoria = async () => {
         const {data} = await axios("/api/categorias")
@@ -26,6 +28,12 @@ const KioscoProvider = ({children}) => {
     useEffect(()=> {
         setCategoriaActual(categorias[0])
     }, [categorias]);
+
+    useEffect(() => {
+        const nuevoTotal = pedido.reduce((total, producto) => (producto.precio * producto.cantidad ) + total, 0)
+
+        setTotal(nuevoTotal)
+    },[pedido])
 
     const handleClickCategoria = id => { 
         const categoria = categorias.filter(cate => cate.id === id )
@@ -74,6 +82,12 @@ const KioscoProvider = ({children}) => {
 
     }
 
+    const enviarOrden = async (e) => {
+        e.preventDefault()
+        console.log("hola")
+    }
+
+
     return(
         <KioscoContext.Provider
             value={{
@@ -83,6 +97,7 @@ const KioscoProvider = ({children}) => {
                 modal,
                 pedido,
                 paso, 
+                total,
                 handleClickCategoria,
                 handleSetProducto,
                 handleChangeModal,
@@ -91,7 +106,8 @@ const KioscoProvider = ({children}) => {
                 handleEditarCantidades,
                 handleEliminarProducto,
                 nombreCliente,
-                setNombreCleinte
+                setNombreCleinte,
+                enviarOrden
 
             }}
         >

@@ -12,6 +12,7 @@ const KioscoProvider = ({children}) => {
     const [modal, setModal] = useState(false);
     const [pedido, setPedido] = useState([]); 
     const [paso, setPaso] = useState(1);
+    const [nombreCliente, setNombreCleinte] =  useState(""); 
 
     const router = useRouter()
     const obtenerCategoria = async () => {
@@ -88,7 +89,9 @@ const KioscoProvider = ({children}) => {
                 handleAgregarPedido,
                 handleChangePaso,
                 handleEditarCantidades,
-                handleEliminarProducto
+                handleEliminarProducto,
+                nombreCliente,
+                setNombreCleinte
 
             }}
         >

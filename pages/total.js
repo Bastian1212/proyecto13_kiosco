@@ -3,11 +3,11 @@ import Layout from "../layout/Layout"
 import useKiosco from "../hooks/useKiosco"
 export default function Total () {
 
-    const {pedido} = useKiosco();
+    const {pedido, nombreCliente, setNombreCleinte} = useKiosco();
 
     const comprobarPedido  = () => { 
     
-            return pedido.length === 0
+            return pedido.length === 0 || nombreCliente.length === 0 || nombreCliente.length < 3 
     }
     useEffect(() =>{
         comprobarPedido();
@@ -31,9 +31,11 @@ export default function Total () {
                         Nombre
                     </label>
                     <input
-                        id="nombre"
+                        id="nombreCliente"
                         type={"text"} 
                         className="bg-gray-200 w-full lg:w-1/3 mt-3 p-2 rounded-md"
+                        value={nombreCliente}
+                        onChange={(e) => setNombreCleinte(e.target.value)}
                     />
                     
                 </div>
@@ -46,7 +48,11 @@ export default function Total () {
                 <div className="mt-5">
                     <input
                         type="submit"
-                        className="bg-indigo-600 w-full lg:w-auto px-5 py-2 rounded uppercase font-bold text-white text-center"
+                        className={`${
+                            comprobarPedido()
+                            ? "bg-indigo-100"
+                            : "bg-indigo-600 hover:bg-indigo-800"
+                        }  w-full lg:w-auto px-5 py-2 rounded uppercase font-bold text-white text-center`}
                         value={"Conformar Pedido "}
                         disabled={comprobarPedido()}
                     >

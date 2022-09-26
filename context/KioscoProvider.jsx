@@ -84,7 +84,13 @@ const KioscoProvider = ({children}) => {
 
     const enviarOrden = async (e) => {
         e.preventDefault()
-        console.log("hola")
+        try {
+            const {data} = await axios.post("/api/ordenes", {pedido, nombreCliente, fecha: Date.now().toString() ,total});
+            console.log(data);
+        } catch (error) {
+            console.log("aki");
+            console.log(error);
+        }
     }
 
 
